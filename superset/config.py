@@ -870,6 +870,9 @@ QUERY_LOGGER = None
 # Set this API key to enable Mapbox visualizations
 MAPBOX_API_KEY = os.environ.get("MAPBOX_API_KEY", "")
 
+# Set this to prepopulate the default map wms endpoint url
+WMS_ENDPOINT_DEFAULT_URL = os.environ.get("WMS_ENDPOINT_DEFAULT_URL", "")
+
 # Maximum number of rows returned for any analytical database query
 SQL_MAX_ROW = 100000
 
