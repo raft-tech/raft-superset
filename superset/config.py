@@ -1424,6 +1424,7 @@ TALISMAN_CONFIG = {
         ],
         "worker-src": ["'self'", "blob:"],
         "connect-src": [
+            os.environ.get("WMS_ENDPOINT_DEFAULT_URL"),
             "'self'",
             "https://api.mapbox.com",
             "https://events.mapbox.com",
@@ -1453,6 +1454,7 @@ TALISMAN_DEV_CONFIG = {
         ],
         "worker-src": ["'self'", "blob:"],
         "connect-src": [
+            os.environ.get("WMS_ENDPOINT_DEFAULT_URL"),
             "'self'",
             "https://api.mapbox.com",
             "https://events.mapbox.com",

@@ -297,6 +297,12 @@ export default function exploreReducer(state = {}, action) {
         force: action.force,
       };
     },
+    [actions.SET_WMS_LAYERS]() {
+      return {
+        ...state,
+        wmsLayers: action.wmsLayers,
+      };
+    },
     [HYDRATE_EXPLORE]() {
       return {
         ...action.data.explore,

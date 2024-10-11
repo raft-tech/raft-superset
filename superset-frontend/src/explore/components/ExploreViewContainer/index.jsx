@@ -395,6 +395,10 @@ function ExploreViewContainer(props) {
   }, [isDynamicPluginLoading]);
 
   useEffect(() => {
+    props.actions.getWmsLayers(props.form_data.wms_endpoint);
+  }, [props.form_data.wms_endpoint]);
+
+  useEffect(() => {
     const hasError = Object.values(props.controls).some(
       control =>
         control.validationErrors && control.validationErrors.length > 0,

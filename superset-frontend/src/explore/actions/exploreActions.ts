@@ -27,6 +27,7 @@ import {
 } from 'src/components/MessageToasts/actions';
 import { Slice } from 'src/types/Chart';
 import { SaveActionType } from 'src/explore/types';
+import { parseString } from 'xml2js';
 
 export const UPDATE_FORM_DATA_BY_DATASOURCE = 'UPDATE_FORM_DATA_BY_DATASOURCE';
 export function updateFormDataByDatasource(
@@ -164,6 +165,61 @@ export function setStashFormData(
   };
 }
 
+export const SET_WMS_LAYERS = 'SET_WMS_LAYERS';
+export interface writeWmsLayersReducer {
+  type: string;
+  wmsLayers: string[];
+}
+export function setWmsLayers(wmsLayers: string[]) {
+  return {
+    type: SET_WMS_LAYERS,
+    wmsLayers,
+  };
+}
+
+export const GET_WMS_LAYERS = 'GET_WMS_LAYERS';
+export interface getWmsLayers {
+  type: string;
+  wmsLayers: string[];
+}
+export function getWmsLayers(wmsEndpoint: string) {
+  return async function (dispatch: Dispatch) {
+    try {
+      const url = `${wmsEndpoint}?SERVICE=WMS&REQUEST=GetCapabilities`;
+      const response = await fetch(url);
+      const text = await response.text();
+
+      if (!text) {
+        const error = 'No WMS capability found at selected endpoint';
+        dispatch(addDangerToast(error));
+        throw error;
+      }
+      parseString(
+        text,
+        (
+          error: any,
+          result: {
+            WMS_Capabilities: { Capability: { Layer: { Layer: any[] }[] }[] };
+          },
+        ) => {
+          if (error) {
+            throw error;
+          } else {
+            const wmsLayers =
+              result.WMS_Capabilities.Capability[0].Layer[0].Layer.map(
+                (layer: any) => layer.Name[0],
+              );
+            dispatch(setWmsLayers(wmsLayers));
+            dispatch(setControlValue('wms_layers', wmsLayers[0])); // default to first option
+          }
+        },
+      );
+    } catch (error) {
+      throw error;
+    }
+  };
+}
+
 export const exploreActions = {
   ...toastActions,
   fetchDatasourcesStarted,
@@ -178,6 +234,7 @@ export const exploreActions = {
   createNewSlice,
   sliceUpdated,
   setForceQuery,
+  getWmsLayers,
 };
 
 export type ExploreActions = typeof exploreActions;
