@@ -31,7 +31,8 @@ import {
   stroked,
   extruded,
   viewport,
-  mapboxStyle,
+  wmsEndpoint,
+  wmsLayer,
   autozoom,
   lineWidth,
 } from '../../utilities/Shared_DeckGL';
@@ -51,7 +52,7 @@ const config: ControlPanelConfig = {
     },
     {
       label: t('Map'),
-      controlSetRows: [[mapboxStyle, viewport], [autozoom]],
+      controlSetRows: [[wmsEndpoint], [wmsLayer], [viewport], [autozoom]],
     },
     {
       label: t('GeoJson Settings'),

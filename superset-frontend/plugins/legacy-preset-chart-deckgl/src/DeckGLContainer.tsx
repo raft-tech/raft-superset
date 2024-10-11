@@ -49,6 +49,8 @@ export type DeckGLContainerProps = {
   height: number;
   layers: (Layer | (() => Layer))[];
   onViewportChange?: (viewport: Viewport) => void;
+  wmsEndpoint?: string;
+  selectedWmsLayers?: string[];
 };
 
 export const DeckGLContainer = memo(

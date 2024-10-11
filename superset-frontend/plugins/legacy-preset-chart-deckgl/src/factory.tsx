@@ -154,6 +154,8 @@ export function createCategoricalDeckGLComponent(
         getPoints={getPoints}
         width={width}
         height={height}
+        wmsEndpoint={formData.wms_endpoint}
+        selectedWmsLayers={formData.wms_layers}
       />
     );
   };

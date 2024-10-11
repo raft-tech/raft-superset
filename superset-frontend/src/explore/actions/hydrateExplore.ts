@@ -153,6 +153,7 @@ export const hydrateExplore =
       controlsTransferred: explore.controlsTransferred,
       standalone: getUrlParam(URL_PARAMS.standalone),
       force: getUrlParam(URL_PARAMS.force),
+      wmsLayers: [],
       metadata,
       saveAction,
       common,

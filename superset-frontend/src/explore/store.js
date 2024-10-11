@@ -93,6 +93,7 @@ Object.keys(controls).forEach(f => {
 const defaultState = {
   controls: defaultControls,
   form_data: getFormDataFromControls(defaultControls),
+  wmsLayers: [],
 };
 
 export { defaultControls, defaultState };

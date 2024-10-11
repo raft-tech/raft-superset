@@ -29,7 +29,8 @@ import {
   lineWidth,
   lineType,
   reverseLongLat,
-  mapboxStyle,
+  wmsEndpoint,
+  wmsLayer,
 } from '../../utilities/Shared_DeckGL';
 import { dndLineColumn } from '../../utilities/sharedDndControls';
 
@@ -61,7 +62,8 @@ const config: ControlPanelConfig = {
       label: t('Map'),
       expanded: true,
       controlSetRows: [
-        [mapboxStyle],
+        [wmsEndpoint], 
+        [wmsLayer],
         [viewport],
         ['color_picker'],
         [lineWidth],

@@ -34,7 +34,8 @@ import {
   legendFormat,
   legendPosition,
   viewport,
-  mapboxStyle,
+  wmsEndpoint,
+  wmsLayer,
 } from '../../utilities/Shared_DeckGL';
 
 const config: ControlPanelConfig = {
@@ -75,7 +76,7 @@ const config: ControlPanelConfig = {
     },
     {
       label: t('Map'),
-      controlSetRows: [[mapboxStyle], [autozoom, viewport]],
+      controlSetRows: [[wmsEndpoint], [wmsLayer], [autozoom, viewport]],
     },
     {
       label: t('Arc'),

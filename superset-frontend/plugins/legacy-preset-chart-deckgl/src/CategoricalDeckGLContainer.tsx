@@ -223,6 +223,8 @@ const CategoricalDeckGLContainer = (props: CategoricalDeckGLContainerProps) => {
         mapboxApiAccessToken={props.mapboxApiKey}
         width={props.width}
         height={props.height}
+        wmsEndpoint={props.formData.wms_endpoint}
+        selectedWmsLayers={props.formData.wms_layers}
       />
       <Legend
         forceCategorical

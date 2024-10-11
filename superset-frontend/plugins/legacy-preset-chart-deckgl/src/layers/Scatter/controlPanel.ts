@@ -33,7 +33,8 @@ import {
   spatial,
   pointRadiusFixed,
   multiplier,
-  mapboxStyle,
+  wmsEndpoint,
+  wmsLayer,
 } from '../../utilities/Shared_DeckGL';
 
 const config: ControlPanelConfig = {
@@ -61,7 +62,7 @@ const config: ControlPanelConfig = {
     {
       label: t('Map'),
       expanded: true,
-      controlSetRows: [[mapboxStyle], [autozoom, viewport]],
+      controlSetRows: [[wmsEndpoint], [wmsLayer], [autozoom, viewport]],
     },
     {
       label: t('Point Size'),

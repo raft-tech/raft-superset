@@ -142,6 +142,8 @@ const DeckMulti = (props: DeckMultiProps) => {
       onViewportChange={setViewport}
       height={height}
       width={width}
+      wmsEndpoint={formData.wms_endpoint}
+      selectedWmsLayers={formData.wms_layers}
     />
   );
 };

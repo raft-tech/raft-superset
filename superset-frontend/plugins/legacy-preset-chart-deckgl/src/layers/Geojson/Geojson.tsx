@@ -220,6 +220,8 @@ const DeckGLGeoJson = (props: DeckGLGeoJsonProps) => {
       setControlValue={setControlValue}
       height={height}
       width={width}
+      wmsEndpoint={formData.wms_endpoint}
+      selectedWmsLayers={formData.wms_layers}
     />
   );
 };
