@@ -36,6 +36,7 @@ import { JsonObject, JsonValue, styled, usePrevious } from '@superset-ui/core';
 import Tooltip, { TooltipProps } from './components/Tooltip';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Viewport } from './utils/fitViewport';
+import { _WMSLayer as WMSLayer } from '@deck.gl/geo-layers';
 
 const TICK = 250; // milliseconds
 
@@ -105,6 +106,13 @@ export const DeckGLContainer = memo(
 
     const { children = null, height, width } = props;
 
+    const baseLayer = new WMSLayer({
+      id: 'WMSLayer',
+      data: props.wmsEndpoint,
+      serviceType: 'wms',
+      layers: props.selectedWmsLayers,
+    });
+
     return (
       <>
         <div style={{ position: 'relative', width, height }}>
@@ -112,7 +120,7 @@ export const DeckGLContainer = memo(
             controller
             width={width}
             height={height}
-            layers={layers()}
+            layers={[baseLayer, ...layers()]}
             viewState={viewState}
             glOptions={{ preserveDrawingBuffer: true }}
             onViewStateChange={onViewStateChange}

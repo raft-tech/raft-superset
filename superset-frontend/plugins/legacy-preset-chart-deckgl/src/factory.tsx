@@ -45,6 +45,8 @@ type deckGLComponentProps = {
   setControlValue: () => void;
   viewport: Viewport;
   width: number;
+  wmsEndpoint: string;
+  selectedWmsLayers: string[];
 };
 export interface getLayerType<T> {
   (
@@ -122,6 +124,8 @@ export function createDeckGLComponent(
         width={width}
         height={height}
         onViewportChange={setViewport}
+        wmsEndpoint={formData.wms_endpoint}
+        selectedWmsLayers={formData.wms_layers}
       />
     );
   });

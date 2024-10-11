@@ -77,6 +77,8 @@ export type CategoricalDeckGLContainerProps = {
   height: number;
   width: number;
   viewport: Viewport;
+  wmsEndpoint: string;
+  selectedWmsLayers: string[];
   getLayer: getLayerType<unknown>;
   payload: JsonObject;
   onAddFilter?: HandlerFunction;
