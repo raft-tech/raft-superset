@@ -30,7 +30,8 @@ import {
   jsDataMutator,
   jsOnclickHref,
   jsTooltip,
-  mapboxStyle,
+  wmsEndpoint,
+  wmsLayer,
   spatial,
   viewport,
 } from '../../utilities/Shared_DeckGL';
@@ -51,7 +52,8 @@ const config: ControlPanelConfig = {
     {
       label: t('Map'),
       controlSetRows: [
-        [mapboxStyle],
+        [wmsEndpoint], 
+        [wmsLayer],
         ['color_scheme', viewport],
         [autozoom],
         [gridSize],

@@ -77,6 +77,8 @@ export type CategoricalDeckGLContainerProps = {
   height: number;
   width: number;
   viewport: Viewport;
+  wmsEndpoint: string;
+  selectedWmsLayers: string[];
   getLayer: getLayerType<unknown>;
   payload: JsonObject;
   onAddFilter?: HandlerFunction;
@@ -223,6 +225,8 @@ const CategoricalDeckGLContainer = (props: CategoricalDeckGLContainerProps) => {
         mapboxApiAccessToken={props.mapboxApiKey}
         width={props.width}
         height={props.height}
+        wmsEndpoint={props.formData.wms_endpoint}
+        selectedWmsLayers={props.formData.wms_layers}
       />
       <Legend
         forceCategorical

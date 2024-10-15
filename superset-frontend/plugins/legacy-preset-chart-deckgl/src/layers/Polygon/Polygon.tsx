@@ -290,6 +290,8 @@ const DeckGLPolygon = (props: DeckGLPolygonProps) => {
         mapboxApiAccessToken={payload.data.mapboxApiKey}
         width={props.width}
         height={props.height}
+        wmsEndpoint={formData.wms_endpoint}
+        selectedWmsLayers={formData.wms_layers}
       />
 
       {formData.metric !== null && (

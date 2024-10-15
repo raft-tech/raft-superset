@@ -29,6 +29,7 @@ import {
 } from '@superset-ui/core';
 import { D3_FORMAT_OPTIONS, sharedControls } from '@superset-ui/chart-controls';
 import { columnChoices, PRIMARY_COLOR } from './controls';
+import { formatSelectOptions } from './utils';
 
 const DEFAULT_VIEWPORT = {
   longitude: 6.85236157047845,
@@ -398,6 +399,31 @@ export const geojsonColumn = {
     description: t('Select the geojson column'),
     mapStateToProps: state => ({
       choices: columnChoices(state.datasource),
+    }),
+  },
+};
+
+export const wmsEndpoint = {
+  name: 'wms_endpoint',
+  config: {
+    type: 'TextControl',
+    label: t('WMS Endpoint'),
+    description: t('Enter the WMS endpoint URL'),
+    mapStateToProps: state => ({
+      default: state.common.conf.WMS_ENDPOINT_DEFAULT_URL,
+    }),
+  },
+};
+
+export const wmsLayer = {
+  name: 'wms_layers',
+  config: {
+    type: 'SelectControl',
+    label: t('WMS Layers'),
+    description: t('Select the WMS layers to display'),
+    isMulti: true,
+    mapStateToProps: state => ({
+      choices: formatSelectOptions(state.wmsLayers),
     }),
   },
 };

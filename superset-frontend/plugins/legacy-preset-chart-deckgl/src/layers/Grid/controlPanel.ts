@@ -32,7 +32,8 @@ import {
   gridSize,
   viewport,
   spatial,
-  mapboxStyle,
+  wmsEndpoint,
+  wmsLayer,
 } from '../../utilities/Shared_DeckGL';
 
 const config: ControlPanelConfig = {
@@ -51,7 +52,7 @@ const config: ControlPanelConfig = {
     {
       label: t('Map'),
       controlSetRows: [
-        [mapboxStyle],
+        [wmsEndpoint], [wmsLayer],
         [viewport],
         ['color_scheme'],
         [autozoom],
